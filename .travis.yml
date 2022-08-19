@@ -1,0 +1,21 @@
+language: python
+python:
+  - 3.5
+  - 3.4
+  - 3.3
+  - 2.7
+  - 2.6
+
+steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+
+# pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
+      - node/install:
+          install-yarn: true
+          node-version: '16.13'
+      - run:
+          name: Run tests
+          # This assumes pytest is installed via the install-package step above
+          command: python3 -m anibot
